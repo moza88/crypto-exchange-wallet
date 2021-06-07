@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../app/App.css";
-import socketIOClient from "socket.io-client";
 
 function App() {
     const [users, setUsers] = useState([]);

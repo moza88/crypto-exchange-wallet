@@ -23,8 +23,7 @@ class PageIndex extends Component {
                         <br/><br/><br/><br/><br/>
 
                         <Switch>
-                            <Route path='/' exact component={Home}/>
-                            <Route path='/data' exact component={Dashboard}/>
+                            <Route path='/' exact component={Dashboard}/>
                         </Switch>
                     </div>
                 </BrowserRouter>
