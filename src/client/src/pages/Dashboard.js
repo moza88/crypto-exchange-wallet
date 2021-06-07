@@ -1,4 +1,4 @@
-import {ticker_bnb_btc, ticker_btc_usd, ticker_eth_usd, ticker_eth_btc, binance_all_tickers} from '../services/Streams'
+import {ticker_bnb_btc, ticker_btc_usd, ticker_eth_usdt, ticker_eth_usd, ticker_eth_btc, binance_all_tickers} from '../services/Streams'
 import Ticker from '../components/Ticker'
 import React, {Component} from 'react'
 import CryptoComboBox from '../components/CryptoComboBox'
@@ -13,6 +13,7 @@ class Dashboard extends Component {
             ticker_eth_btc: {},
             ticker_eth_usd: {},
             ticker_btc_usd: {},
+            ticker_eth_usdt: {},
             binance_all_tickers: []
         }
     }
@@ -26,6 +27,10 @@ class Dashboard extends Component {
             this.setState({ticker_btc_usd: JSON.parse(res.data)});
         };
 
+        ticker_eth_usdt.onmessage = (res) => {
+            this.setState({ticker_eth_usdt: JSON.parse(res.data)});
+
+        }
         binance_all_tickers.onmessage = (res) => {
             this.setState({binance_all_tickers: JSON.parse(res.data)});
         }
@@ -35,26 +40,28 @@ class Dashboard extends Component {
     componentWillUnmount() {
         ticker_bnb_btc.close();
         ticker_btc_usd.close();
+        ticker_eth_usdt.close();
         binance_all_tickers.close();
     }
 
     render() {
         return (
-            <Grid
-                container
-                spacing={2}
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
-            >
             <div className="container">
+                <div className="row">
+                    <div className="col-3">
 
+                        <Ticker streams={this.state.ticker_bnb_btc}/></div>
+                    <div className="col-3">
 
-                <Ticker streams={this.state.ticker_bnb_btc}/><br/>
-                <Ticker streams={this.state.ticker_btc_usd}/>
+                        <Ticker streams={this.state.ticker_btc_usd}/>
+                    </div>
+                    <div className="col-3">
 
+                        <Ticker streams={this.state.ticker_eth_usdt}/>
+                    </div>
+
+                </div>
             </div>
-            </Grid>
 
         )
     }

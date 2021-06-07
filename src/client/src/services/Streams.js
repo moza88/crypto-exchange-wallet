@@ -9,6 +9,7 @@ export const ticker_eth_btc = new WebSocket('wss://stream.binance.com:9443/ws/et
 //Tickers to USD
 export const ticker_eth_usd = new WebSocket('wss://stream.binance.com:9443/ws/ethusd@ticker');
 export const ticker_btc_usd = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker');
+export const ticker_eth_usdt = new WebSocket('wss://stream.binance.com:9443/ws/ethusdt@ticker');
 export const ticker_ltc_usd = new WebSocket('wss://stream.binance.com:9443/ws/ltcusd@ticker');
 export const ticker_xrp_usd = new WebSocket('wss://stream.binance.com:9443/ws/xrpusd@ticker');
 export const ticker_bch_usd = new WebSocket('wss://stream.binance.com:9443/ws/bchusd@ticker');

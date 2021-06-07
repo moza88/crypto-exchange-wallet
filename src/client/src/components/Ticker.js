@@ -17,7 +17,6 @@ function Ticker(props) {
             }
             { props.streams.hasOwnProperty('s') &&
 
-
                 <Card>
                     <CardHeader
                         title={props.streams.s != null && props.streams.s.substring(0,3)+'-'+(props.streams.s.substring(3,7))}>
@@ -42,7 +41,7 @@ function Ticker(props) {
 
                 </Card>
             }
-        </div>
+        <br/> </div>
     );
 };
 
