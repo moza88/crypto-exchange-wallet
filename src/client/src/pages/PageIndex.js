@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from "../components/Header";
 
 import Home from "../pages/Home";
-import MarketData from "../pages/MarketData"
 import Dashboard from "../pages/Dashboard";
 /*
 As you add in pages add them into this index along with the sub page they belong to
