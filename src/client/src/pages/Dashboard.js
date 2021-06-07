@@ -4,6 +4,8 @@ import React, {Component} from 'react'
 import CryptoComboBox from '../components/CryptoComboBox'
 import FiatComboBox from '../components/FiatComboBox'
 import {Button, Grid} from '@material-ui/core'
+import CryptowatchEmbed from 'cryptowatch-embed';
+
 
 class Dashboard extends Component {
     constructor(props) {
@@ -17,6 +19,7 @@ class Dashboard extends Component {
             binance_all_tickers: []
         }
     }
+
 
     componentDidMount() {
         ticker_bnb_btc.onmessage = (res) => {
@@ -35,6 +38,13 @@ class Dashboard extends Component {
             this.setState({binance_all_tickers: JSON.parse(res.data)});
         }
 
+        var chart = new CryptowatchEmbed('bitfinex', 'btcusd', {
+            width: 800,
+            height: 500,
+            presetColorScheme: 'ishihara',
+
+        });
+        chart.mount('#chart-container');
     }
 
     componentWillUnmount() {
@@ -51,9 +61,12 @@ class Dashboard extends Component {
                     <div className="col-3">
 
                         <Ticker streams={this.state.ticker_bnb_btc}/></div>
+
                     <div className="col-3">
 
                         <Ticker streams={this.state.ticker_btc_usd}/>
+                        <div id="chart-container"></div>
+
                     </div>
                     <div className="col-3">
 

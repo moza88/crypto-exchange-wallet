@@ -1,6 +1,7 @@
 import React from 'react';
 import ContentLoader from "react-content-loader"
 import {Button, Card, CardActions, CardContent, CardHeader, Typography, Grid} from "@material-ui/core";
+import CryptowatchEmbed from "cryptowatch-embed";
 
 function round(num, decimalPlaces = 0) {
     num = Math.round(num + "e" + decimalPlaces);
@@ -8,13 +9,16 @@ function round(num, decimalPlaces = 0) {
 }
 
 function Ticker(props) {
+
     return (
+
         <div className="card">
             { !props.streams.hasOwnProperty('s') &&
             <ContentLoader height={160} width={400} speed={2} primaryColor="#ffffff" secondaryColor="#dadada">
                 <rect x="71" y="28" rx="0" ry="0" width="239" height="116"/>
             </ContentLoader>
             }
+
             { props.streams.hasOwnProperty('s') &&
 
                 <Card>
@@ -22,6 +26,8 @@ function Ticker(props) {
                         title={props.streams.s != null && props.streams.s.substring(0,3)+'-'+(props.streams.s.substring(3,7))}>
                     </CardHeader>
                     <CardContent>
+
+
                         <Typography variant="header1" color="textPrimary">
                             Last Price: {round(props.streams.c, 3)}</Typography><br/>
 
@@ -37,7 +43,8 @@ function Ticker(props) {
 
                         <Button size="medium" color="primary">Buy</Button>
                         <Button size="medium" color="primary">Sell</Button>
-                    </CardContent>
+
+                </CardContent>
 
                 </Card>
             }
